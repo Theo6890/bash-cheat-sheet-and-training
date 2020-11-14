@@ -33,4 +33,4 @@ If:
    - call function: `function_A arg1 arg2`
    
 ## String
- - see string_basic_operation.sh
+ - see basics/string_basic_operation.sh
