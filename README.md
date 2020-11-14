@@ -1,9 +1,9 @@
-#Shell: Cheat sheet
+# Shell: Cheat sheet
 
-##Variable
+## Variable
 Display: `echo "$var"`
 
-##Condition
+## Condition
 For:
  - `for; do...; done`
  - C/JS like: `for (( i = 0; i <  10; i++))`
@@ -13,7 +13,7 @@ If:
  - C/JS like: `if (( $var == 0 )); then...; fi`
  - Normal: `if [[ $var -eq $var2 ]]; then...; fi`
  
-##Array
+## Array
  - Declare it: `a=()` or initialized it `a=(1 2 5 6 8 67)`
  - Get value at an index: `${a[0]}`
  - Get length: `${#a[@]}`
@@ -21,5 +21,5 @@ If:
  - Get all values: `${z[*]}` or `${z[@]}`
  - Copy of array: `z=("${tmp[@]}")`
  
-##Operation
+## Operation
  - Calculate: `$((i + 1))`
