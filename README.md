@@ -67,7 +67,7 @@ TO LOOK FORWARD ABOUT IT
 *Remark: By default pipelines redirects only the standard output, if you want to include the standard error you need 
 to use the form |& which is a short hand for 2>&1 |* 
 
-## Process Substitution
+## Redirection ~= Process Substitution
  - Save sorted results to new files & show diffs between files:
     - without process subs:
     `sort file1 > sorted_file1`<br>
