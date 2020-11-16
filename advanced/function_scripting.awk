@@ -1,4 +1,5 @@
 #!/usr/bin/awk -f
+#launch script with: ./function_scripting.awk /etc/passwd
 
 BEGIN{
     # set input and output field separators
