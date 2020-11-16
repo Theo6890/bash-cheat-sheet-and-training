@@ -7,15 +7,29 @@ Learn shell [here](https://www.learnshell.org/)
 ## Variable
 Display: `echo "$var"`
 
-## Decision Making
-For:
- - `for; do...; done`
- - C/JS like: `for (( i = 0; i <  10; i++))`
- - Python like: `for i in {0..2}`
- 
-If:
- - C/JS like: `if (( $var == 0 )); then...; fi`
- - Normal: `if [[ $var -eq $var2 ]]; then...; fi`
+## Decision making 
+ - **If**
+     - C/JS like: `if (( $var == 0 )); then...; fi`
+     - Normal: `if [[ $var -eq $var2 ]]; then...; fi`
+     - Is it in?:
+        - `if [[ $VAR == *"Linux"* ]]`
+        - `if [[ $VAR =~ .*Linux.* ]]`
+ - **Switch:**<br>
+    `case ... in`<br>
+    `   ...) ... ;;`<br>
+    `esac`
+ - Is a string empty?: `-z`
+ - Everything else is the same as other language using `(( ... ))`   
+
+# Loop
+ - For:
+    - `for; do...; done`
+    - C/JS like: `for (( i = 0; i <  10; i++))`
+    - Python like: `for i in {0..2}`
+ - While: running as long as condition is **true**
+    - `while ... option; do ...; done`
+ - Until: running as long as condition is **false**
+    - `until ...; do ...; done`
  
 ## Array
  - Declare it: `a=()` or initialized it `a=(1 2 5 6 8 67)`
@@ -40,10 +54,13 @@ see basics/string_basic_operation.sh
 # Advanced
 
 ## Special variables
- -`$0` : filename
- - `$n`: Nth arg passed was invoked or function was called
- - `$#`: nbr of arg passed *(script or function)*
- - `$@` or `$*`: all args passed *(script or function)*
+ - `$0` : filename
+ - `$n`: Nth arg passed was invoked or function was called<br>
+    *test it: if [ "$1" != "" ]*
+ - `$#`: nbr of arg passed *(script or function)*<br>
+    *there are arguments if > 0*
+ - `$@` or `$*`: all args passed *(script or function)*<br>
+    *can loop on it*
  - `$?`: exit status from last command executed
  - `$$`: process ID of shell *(shell scripts: process ID under which they are executing)*
  - `$!`: process nbr of last bg command
@@ -59,7 +76,17 @@ ex: `trap "echo Booh!" SIGINT SIGTERM` --> on Crtl+C displays ***Booh!***
  - Read permission?: `if [ ! -f "$filename" ]`
 
 ## Input Parameter Parsing
-TO LOOK FORWARD ABOUT IT
+ - To get arguments see **Special Variables** section
+ - Read option values: loop on `getops` function
+    - ex: get value for `-u -a -l`<br>
+    `while getopts u:a:l: option `<br>`
+        do `<br>`
+        case "${option}" in`<br>`
+            u) USER=${OPTARG};;`<br>`
+            a) AGE=${OPTARG};;`<br>`
+            l) LOCATION=${OPTARG};;`<br>`
+        esac`<br>`
+     done` 
 
 ## Pipe(line)s
  - Counts nbr entries in directory: `ls / | wc -l`
@@ -78,7 +105,10 @@ to use the form |& which is a short hand for 2>&1 |*
  - Only lower case in file but keep regular case on output: `echo "Hello, world!" | tee >(tr '[:upper:]' '[:lower:]' > /tmp/hello.txt)`
 
 ## Regular expressions
-TO LOOK FORWARD ABOUT IT
+### TO LOOK FORWARD ABOUT IT
 
 ## Special Commands sed,awk,grep,sort
-TO LOOK FORWARD ABOUT IT
+ - `sed`: stream editor AKA edit entry as a text editor
+ - `awk`:
+ - `grep`: filter AKA print lines matching a pattern
+ - `sort`
